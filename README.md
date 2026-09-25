@@ -46,6 +46,24 @@ changes*). Vercel rebuilds on every commit to `main`.
 3. In `data/site.json`, set `"currentYear": 2027` and update the nav label/link.
 4. In `vercel.json`, point the `/schedule` redirect at `/2027-schedule`.
 
+## "Who's going" sign-ups
+
+Each event on the current schedule page has a **Who's going** list where people add
+their name (plus an optional note like "need crew") as *going* or *maybe*. Sign-ups
+close the day after an event ends, and past events show a "Who went" list.
+
+- Sign-ups are stored by the serverless function `api/rsvp.js` in an **Upstash Redis**
+  database. One-time setup: Vercel → Project → **Storage** → *Create Database* →
+  **Upstash** (Redis, free plan) → connect it to this project → redeploy. Until that's
+  done the lists just don't appear.
+- People can remove their own sign-up from the same browser. To remove anything else
+  (spam, duplicates), open the database in Upstash's **Data Browser**: each event is a
+  hash named `rsvp:<event id>` — delete the entry there.
+- An event's id is `<year>-<title as a slug>` (e.g. `2026-turkey-bowl`). **Renaming an
+  event starts a fresh list**, so if you rename one that already has sign-ups, add
+  `"id": "<old id>"` to it in the JSON to keep them.
+- Locally, `npm run dev` runs the same function with an in-memory store.
+
 ## Photos
 
 All photos live in `public/images/` (copied from the old Google Site in Sept 2026).

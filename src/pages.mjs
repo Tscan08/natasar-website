@@ -1,6 +1,7 @@
 // Page content. Edit text here; edit the schedule in data/schedule-2026.json.
 import { site, esc, img, dateRange, monthAbbr, dayNum, extLink, readJSON } from './lib.mjs';
 import { communityStrip } from './layout.mjs';
+import { eventId } from './event-id.mjs';
 
 const schedule = readJSON('data/schedule-2026.json');
 const archive = readJSON('data/schedule-archive.json');
@@ -19,7 +20,7 @@ function pageHero({ eyebrow, title, lede, image }) {
 </section>`;
 }
 
-function eventCard(ev, { compact = false } = {}) {
+function eventCard(ev, { compact = false, rsvp = false } = {}) {
   const image = img(ev.image);
   const links = (ev.links || []).map((l) => extLink(l.url, l.label, 'btn btn-small')).join(' ');
   return `
@@ -31,6 +32,7 @@ function eventCard(ev, { compact = false } = {}) {
     ${ev.location ? `<p class="event-loc">${esc(ev.location)}</p>` : ''}
     ${ev.description && !compact ? `<p>${esc(ev.description)}</p>` : ''}
     ${links && !compact ? `<p class="event-links">${links}</p>` : ''}
+    ${rsvp ? `<div class="rsvp" data-rsvp="${esc(eventId(ev))}" hidden></div>` : ''}
   </div>
   ${image && !compact ? `<img class="event-img" src="${esc(image)}" alt="" loading="lazy">` : ''}
 </article>`;
@@ -133,7 +135,7 @@ ${pageHero({ eyebrow: 'Racing & training', title: `${Y} Schedule`, lede: `${esc(
         <button type="button" data-filter="all" aria-pressed="false">All ${Y}</button>
       </div>
       <div class="events" data-events>
-        ${events.map((e) => eventCard(e)).join('')}
+        ${events.map((e) => eventCard(e, { rsvp: true })).join('')}
       </div>
       <p class="muted past-links">Previous years: ${past}</p>
     </div>
