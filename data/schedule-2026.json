@@ -1,0 +1,127 @@
+{
+  "year": 2026,
+  "intro": "Tasar North America 2026 schedule includes training for Worlds at Okinawa, Japan in June.",
+  "note": "Tasars headed to Japan will likely leave in a container in early April and return in late August.",
+  "events": [
+    {
+      "start": "2026-01-24", "end": "2026-01-25",
+      "title": "Frigid Digit",
+      "location": "Shilshole Bay Marina, Seattle",
+      "description": "Two days of winter racing for several classes of small boats. Run by CYC Seattle at Shilshole Bay Marina.",
+      "links": [{ "label": "Event page", "url": "https://www.cycseattle.org/regatta/VLyWLlSiwZ" }],
+      "image": "ev-frigid-digit"
+    },
+    {
+      "start": "2026-03-01", "end": "2026-03-01",
+      "title": "Tasar Shake-the-Rust-Off Day",
+      "location": "Shilshole Bay Marina, Seattle",
+      "description": "We'll spend a Sunday on Puget Sound to really get things going for the season.",
+      "links": [],
+      "image": "ev-shake-rust"
+    },
+    {
+      "start": "2026-03-28", "end": "2026-03-29",
+      "title": "Puget Sound One Design Regatta",
+      "location": "CYC Seattle, Shilshole Bay Marina",
+      "description": "CYC hosts a spring regatta for small boats, formerly Puget Sound Spring Regatta (PSSR), out of the clubhouse at the north end of Shilshole Bay Marina in Seattle.",
+      "links": [],
+      "image": "ev-psod"
+    },
+    {
+      "start": "2026-04-11", "end": "2026-04-12",
+      "title": "Worlds Training Weekend",
+      "location": "Shilshole Bay Marina, Seattle",
+      "description": "Several teams representing North America at the 2026 Tasar Worlds in Okinawa, Japan — plus any and all Tasars looking to improve! — will spend the weekend racing and practicing.",
+      "links": [],
+      "image": "ev-worlds-training",
+      "tag": "Worlds prep"
+    },
+    {
+      "start": "2026-05-23", "end": "2026-05-24",
+      "title": "Columbia River Gorge Training Weekend",
+      "location": "Cascade Locks Marine Park, OR (CGRA)",
+      "description": "Great practice for all Tasars, especially teams tuning up for Worlds in June. We'll sail out of Cascade Locks Marine Park at the Columbia River Gorge Racing Association facilities. Don't miss this opportunity to sail in strong wind against river current!",
+      "links": [],
+      "image": "ev-gorge",
+      "tag": "Worlds prep"
+    },
+    {
+      "start": "2026-06-27", "end": "2026-06-28",
+      "title": "Try Out Tasars",
+      "location": "Shilshole Bay Marina (dinghy docks), Seattle",
+      "description": "Inviting all interested sailors! Come meet the fleet and try out Tasars.",
+      "links": [],
+      "image": "ev-try-out",
+      "tag": "Newcomers welcome"
+    },
+    {
+      "start": "2026-07-18", "end": "2026-07-19",
+      "title": "Tasar Fun Regatta",
+      "location": "Shilshole Bay Marina (dinghy docks), Seattle",
+      "description": "Another great opportunity to join the fleet and pick up more practice during a fun-first informal regatta.",
+      "links": [],
+      "image": "ev-fun-regatta"
+    },
+    {
+      "start": "2026-08-01", "end": "2026-08-02",
+      "title": "Skamania Coves Invitational Regatta",
+      "location": "Skamania Coves Resort, Stevenson, WA",
+      "description": "Skamania Coves 6th annual Invitational regatta for Tasars and ILCA Masters, hosted by CGRA at the stunning Skamania Coves Resort — a beautiful 30-acre waterfront property on the Columbia River. This is a not-to-miss annual event that is well worth participating in! FYI: we are negotiating a potential date move for this event.",
+      "links": [],
+      "image": "ev-skamania"
+    },
+    {
+      "start": "2026-08-08", "end": "2026-08-09",
+      "title": "Port Townsend Small Boat Regatta",
+      "location": "Port Townsend, WA",
+      "description": "Tasars are warmly invited to participate in the Small Boat Regatta in Port Townsend, where several sailors have expressed interest in the fleet. Bellingham and Harrison Hot Springs are prioritized for the fleet this season.",
+      "links": [],
+      "image": "ev-port-townsend"
+    },
+    {
+      "start": "2026-08-16", "end": "2026-08-16",
+      "title": "Training Day",
+      "location": "Shilshole Bay Marina (dinghy docks), Seattle",
+      "description": "We've updated Bush Regatta #3 to a one-day tune-up and practice day on Saturday, August 16. Thank you to Tim for putting this together!",
+      "links": [
+        { "label": "Here's the plan", "url": "https://docs.google.com/document/d/1sXh2grCOMlUc39YhPoL9dos2kmSPuLZvcxhGde-B7f8/edit?usp=drivesdk" },
+        { "label": "Register / show your interest", "url": "https://docs.google.com/forms/d/e/1FAIpQLSdettDL0dz_2ckY1oRz8bolAtu02Rf-sfqppAALhBrmK-IIOA/viewform?usp=header" }
+      ],
+      "image": "ev-training-day"
+    },
+    {
+      "start": "2026-09-05", "end": "2026-09-06",
+      "title": "Harrison Hot Springs Regatta + BC Championships",
+      "location": "Harrison Hot Springs, BC, Canada",
+      "description": "Travel to Harrison Hot Springs in British Columbia for a one-design regatta that will also serve as the BC Tasar Championships.",
+      "links": [],
+      "image": "ev-harrison",
+      "tag": "Championship"
+    },
+    {
+      "start": "2026-09-19", "end": "2026-09-20",
+      "title": "Bellingham One Design Regatta + Tasar US Nationals",
+      "location": "Bellingham Yacht Club, Bellingham, WA",
+      "description": "We'll join the Bellingham One Design Regatta hosted by Bellingham Yacht Club. This event will also be the US National Championships for Tasars.",
+      "links": [],
+      "image": "ev-bellingham",
+      "tag": "Championship"
+    },
+    {
+      "start": "2026-09-26", "end": "2026-09-27",
+      "title": "Puget Sound Sailing Championship (PSSC)",
+      "location": "CYC Seattle, Shilshole Bay Marina",
+      "description": "PSSC Small Boats regatta hosted at CYC Seattle out of their clubhouse at the north end of Shilshole Bay Marina.",
+      "links": [],
+      "image": "ev-pssc"
+    },
+    {
+      "start": "2026-11-21", "end": "2026-11-22",
+      "title": "Turkey Bowl",
+      "location": "CYC Seattle, Shilshole Bay Marina",
+      "description": "Turkey Bowl Regatta hosted at CYC Seattle out of their clubhouse at the north end of Shilshole Bay Marina.",
+      "links": [],
+      "image": "ev-turkey-bowl"
+    }
+  ]
+}

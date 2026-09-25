@@ -1,0 +1,29 @@
+{
+  "2025": {
+    "events": [
+      { "start": "2025-04-05", "end": "2025-04-06", "title": "Tasar Clinic + Racing", "location": "Shilshole Marina, Seattle", "description": "Two-day professionally-run clinic for Tasar skippers and crew, with racing on Sunday. Seven boats participated with measurements, shore-side talks, and practice races.", "links": [] },
+      { "start": "2025-04-12", "end": "2025-04-13", "title": "Puget Sound Spring Regatta (PSSR)", "location": "CYC Seattle, Shilshole Marina", "description": "Small Boats event at CYC Seattle.", "links": [ { "label": "Results", "url": "https://cycseattle.theclubspot.com/regatta/OESrr3pbG1/results" } ] },
+      { "start": "2025-04-26", "end": "2025-04-27", "title": "Pre-Worlds Racing Practice + Load Boats", "location": "Shilshole Marina, Seattle", "description": "One-day racing practice to tune up for Worlds. Six boats loaded into a container for transport to Lake Garda.", "links": [] },
+      { "start": "2025-05-17", "end": "2025-05-18", "title": "Bush Regatta #1", "location": "Shilshole Bay, Seattle", "description": "Informal racing practice.", "links": [] },
+      { "start": "2025-06-28", "end": "2025-06-29", "title": "Columbia River Gorge", "location": "Cascade Locks, OR", "description": "Great practice for all Tasars, especially teams tuning up for Worlds in July.", "links": [] },
+      { "start": "2025-07-14", "end": "2025-07-21", "title": "Tasar Europeans + Tasar Worlds", "location": "Lake Garda, Italy", "description": "The 50th Tasar Worlds, with two European Nationals days and five Worlds racing days.", "links": [ { "label": "Worlds site", "url": "https://2025.tasarworlds.com/" }, { "label": "Tasar.org", "url": "https://www.tasar.org/worlds/2025-garda-worlds.aspx" } ] },
+      { "start": "2025-08-02", "end": "2025-08-03", "title": "Skamania Coves", "location": "Skamania Coves Resort, Stevenson, WA", "description": "5th annual Invitational regatta for Tasars (and ILCA Masters).", "links": [ { "label": "Event", "url": "https://www.regattanetwork.com/event/29908" } ] },
+      { "start": "2025-08-16", "end": "2025-08-16", "title": "Training Day", "location": "Shilshole Bay Marina, Seattle", "description": "One-day practice.", "links": [] },
+      { "start": "2025-09-06", "end": "2025-09-07", "title": "Jericho BC Tasar Championships", "location": "Jericho Sailing Centre, Vancouver, BC", "description": "Annual Tasar regatta at the fabulously situated Jericho Sailing Centre.", "links": [ { "label": "Event", "url": "https://jsca.bc.ca/event/tasar-bc-championships-3/" } ] },
+      { "start": "2025-09-27", "end": "2025-09-28", "title": "PSSC + Tasar North Americans", "location": "CYC Seattle", "description": "Puget Sound Sailing Championship, also serving as the 2025 Tasar North Americans.", "links": [ { "label": "Event", "url": "https://cycseattle.theclubspot.com/regatta/hHHJlJWKgv" } ] },
+      { "start": "2025-10-19", "end": "2025-10-19", "title": "Tasar Racing Practice", "location": "Seattle", "description": "One-day racing practice including rotating on-the-water coaching and observation.", "links": [] },
+      { "start": "2025-11-22", "end": "2025-11-23", "title": "Turkey Bowl", "location": "CYC Seattle, Shilshole Marina", "description": "", "links": [ { "label": "Event", "url": "https://cycseattle.theclubspot.com/regatta/h5PMe2FGl1" } ] }
+    ]
+  },
+  "2024": {
+    "events": [
+      { "start": "2024-04-06", "end": "2024-04-07", "title": "Puget Sound Spring Regatta (PSSR)", "location": "CYC Seattle, Shilshole Marina", "description": "", "links": [ { "label": "Tasar results", "url": "https://cycseattle.theclubspot.com/regatta/Fu9wiWjZk6/results?class_id=xsCnyxh9Z7" } ] },
+      { "start": "2024-05-18", "end": "2024-05-19", "title": "Lake Crescent", "location": "Lake Crescent, Olympic Peninsula, WA", "description": "Bush regatta near Port Angeles — ten quality, thirty-five-minute races on a clear freshwater lake next to the Strait of Juan de Fuca.", "links": [ { "label": "Results", "url": "https://theclubspot.com/regatta/3yr4fesHDh/results?class_id=fagPv9dZsp" } ] },
+      { "start": "2024-06-29", "end": "2024-06-30", "title": "West Sound", "location": "Orcas Island Yacht Club, WA", "description": "West Sound Tasar regatta on beautiful Orcas Island in the San Juan Islands.", "links": [ { "label": "Results", "url": "https://oiyc.org/Sailing/oiyc_club_racing_series_calc.php?series=TASAR&year=2024" } ] },
+      { "start": "2024-08-02", "end": "2024-08-04", "title": "Skamania Coves", "location": "Skamania Coves Resort, Stevenson, WA", "description": "4th annual Invitational regatta for Tasars (and ILCA Masters), hosted by CGRA.", "links": [ { "label": "Results", "url": "https://www.regattanetwork.com/event/27482#_newsroom" } ] },
+      { "start": "2024-09-07", "end": "2024-09-08", "title": "Tasar North Americans", "location": "Jericho Sailing Centre, Vancouver, BC", "description": "Building the North American Tasar fleet for upcoming Worlds regattas.", "links": [ { "label": "Results", "url": "https://jracing.org/event_results.php?tab_count=2&event=680%26%263" } ] },
+      { "start": "2024-09-21", "end": "2024-09-22", "title": "Summertide", "location": "Summertide Resort, Hood Canal, WA", "description": "The Tasar end-of-season takeover of Summertide Resort, with barbecue and potluck.", "links": [ { "label": "Results", "url": "https://theclubspot.com/regatta/c0YIRuaE1x/results" } ] },
+      { "start": "2024-11-23", "end": "2024-11-24", "title": "Turkey Bowl", "location": "CYC Seattle, Shilshole Marina", "description": "Tasars did not participate.", "links": [] }
+    ]
+  }
+}

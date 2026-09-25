@@ -1,0 +1,28 @@
+{
+  "name": "North America Tasar Association",
+  "shortName": "NATA",
+  "url": "https://www.natasar.org",
+  "description": "The North America Tasar fleet — high-performance double-handed dinghy racing in the Pacific Northwest. Borrow a boat and join our practices and regattas.",
+  "currentYear": 2026,
+  "nav": [
+    { "label": "Home", "href": "/" },
+    { "label": "2026 Schedule", "href": "/2026-schedule" },
+    { "label": "Boats & Tuning", "href": "/boats-tuning" },
+    { "label": "Find a Boat", "href": "/find-a-boat" },
+    { "label": "Contact", "href": "/contact-us" }
+  ],
+  "community": {
+    "googleGroup": "https://groups.google.com/g/nata-tasar-sailors",
+    "seattleGroup": "https://groups.google.com/g/seattle-tasar",
+    "facebook": "https://www.facebook.com/groups/natasar/",
+    "whatsappRequest": "mailto:derek@derekbottles.com?subject=NW%20Tasar%20Group%20WhatsApp%20invite",
+    "calendarSubscribe": "https://calendar.google.com/calendar/u/0?cid=ZGMyNmZhMjI1M2E5ZDE0NGJlZWE4MmU4ZGI3M2U0NzAzZWZiMTRhN2FiMTNlNTZmZDc2MDRiOTc5ODdmZmVjNkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t",
+    "calendarEmbed": "https://calendar.google.com/calendar/embed?src=dc26fa2253a9d144beea82e8db73e4703efb14a7ab13e56fd7604b97987ffec6%40group.calendar.google.com&ctz=America%2FLos_Angeles&mode=AGENDA&showTitle=0&showPrint=0&showTabs=1&showCalendars=0&showTz=0&color=%23fbe983"
+  },
+  "leaders": [
+    { "name": "Derek Bottles", "role": "NATA President", "email": "derek@derekbottles.com", "image": "leader-derek" },
+    { "name": "Jonathan McKee", "role": "NATA Secretary", "email": "jonathanmckee@msn.com", "image": "leader-jonathan" },
+    { "name": "Chris Lanzinger", "role": "NATA Treasurer", "email": "", "image": "" },
+    { "name": "Alyosha Strum-Palerm", "role": "Tasar Class Chief Measurer", "email": "alyoshasp3@gmail.com", "image": "leader-alyosha" }
+  ]
+}
