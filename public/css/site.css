@@ -233,3 +233,11 @@ p { margin: 0 0 1em; }
 .footer-links { list-style: none; display: flex; flex-wrap: wrap; gap: 6px 18px; padding: 0; margin: 0; }
 .site-footer a { color: rgba(255,255,255,.85); text-decoration: none; }
 .site-footer a:hover { color: #fff; text-decoration: underline; }
+
+/* ---------- race reports ---------- */
+.prose { font-size: 1.1rem; line-height: 1.7; overflow-wrap: break-word; }
+.prose p { margin: 0 0 1.1em; }
+.prose h2 { margin-top: 1.4em; }
+.prose ul { margin: 0 0 1.2em; padding: 14px 18px 14px 36px; background: var(--sand); border-radius: var(--radius); }
+.prose li + li { margin-top: 2px; }
+.report-back { margin-top: 2em; padding-top: 1.2em; border-top: 1px solid var(--line); }

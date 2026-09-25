@@ -1,5 +1,5 @@
 // Page content. Edit text here; edit the schedule in data/schedule-2026.json.
-import { site, esc, img, dateRange, monthAbbr, dayNum, extLink, readJSON } from './lib.mjs';
+import { site, esc, img, dateRange, monthAbbr, dayNum, extLink, readJSON, readReports } from './lib.mjs';
 import { communityStrip } from './layout.mjs';
 import { eventId } from './event-id.mjs';
 
@@ -161,6 +161,27 @@ ${pageHero({ eyebrow: 'Archive', title: `${year} Schedule`, lede: `A look back a
   </div>
 </section>`;
     return { path: `/${year}-schedule`, title: `${year} Schedule`, body };
+  });
+}
+
+/* ---------- Race reports (data/reports/*.md) ---------- */
+
+export function reportPages() {
+  return readReports().map((r) => {
+    const year = r.start.slice(0, 4);
+    const back = archive[year] ? `/${year}-schedule` : `/${Y}-schedule`;
+    const body = `
+${pageHero({ eyebrow: `Race report · ${year}`, title: r.title, lede: `Write-up for ${esc(r.event)}, ${esc(r.dates)}${r.author ? ` · by ${esc(r.author)}` : ''}` })}
+<section class="section">
+  <div class="wrap narrow">
+    <article class="prose">
+${r.html}
+    </article>
+    <p class="muted report-back"><a href="${back}">← Back to the ${year} schedule</a></p>
+  </div>
+</section>
+${communityStrip()}`;
+    return { path: `/${r.slug}`, title: r.title, description: `${r.event}, ${r.dates} — race report${r.author ? ` by ${r.author}` : ''}.`, body };
   });
 }
 

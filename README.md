@@ -15,6 +15,7 @@ the live site updates automatically about 30 seconds later.
 | Colors, fonts, layout                    | `public/css/site.css`           |
 | Photos                                   | `data/images.json` + `public/images/` |
 | Past seasons (2024, 2025)                | `data/schedule-archive.json`    |
+| Race reports / regatta write-ups         | `data/reports/*.md`             |
 
 ### Adding or editing an event
 
@@ -103,10 +104,26 @@ Old URLs keep working: `/home` redirects to `/`, and `/2026-schedule`,
 `/boats-tuning`, `/find-a-boat`, `/contact-us`, `/2025-schedule` and
 `/2024-schedule` are unchanged.
 
-## Not yet migrated
+## Race reports
 
-The old site has regatta write-up pages that were linked from the 2024/2025
-schedules (e.g. `/pssr-report`, `/lake-crescent-report`, `/west-sound-report`,
-`/skamania-coves-report`, `/jericho-north-americans`, `/summertide-2024`,
-`/turkey-bowl-2025`). They'll stop working when the domain moves unless they're
-ported — add them as pages in `src/pages.mjs`.
+Each regatta write-up is a Markdown file in `data/reports/`, and the file name is
+its web address (`data/reports/pssr-report.md` → `/pssr-report`, same URLs as the
+old site). To add one, copy an existing file and edit it on github.com:
+
+```markdown
+---
+title: Summertide 2026
+event: Summertide at Hood Canal
+dates: September 19–20, 2026
+author: Your Name
+start: 2026-09-19
+---
+
+First paragraph. Blank lines separate paragraphs. [Link text](https://…), **bold**.
+
+- Lines starting with "- " make a list (handy for results)
+```
+
+`start` is used for ordering and for the "Back to the <year> schedule" link. To show a
+**Race report** button on the event, add `{ "label": "Race report", "url": "/summertide-2026" }`
+to that event's `links`.
