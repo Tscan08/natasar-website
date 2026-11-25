@@ -20,14 +20,23 @@ function pageHero({ eyebrow, title, lede, image }) {
 </section>`;
 }
 
-function eventCard(ev, { compact = false, rsvp = false } = {}) {
+/** Plain-text date for an event, e.g. "Jul 24–25", "Jun 19–20 (target)", "April · dates TBD". */
+function whenText(ev) {
+  if (ev.tbd === 'date') return 'Date TBD';
+  if (ev.tbd) return `${monthName(ev.start)} · dates TBD`;
+  return dateRange(ev.start, ev.end) + (ev.dateNote ? ` (${ev.dateNote})` : '');
+}
+const eventPath = (ev) => `/events/${eventId(ev)}`;
+
+function eventCard(ev, { compact = false, rsvp = false, share = false } = {}) {
   const image = img(ev.image);
-  const links = (ev.links || []).map((l) => extLink(l.url, l.label, 'btn btn-small')).join(' ');
+  const links = [
+    ...(ev.links || []).map((l) => extLink(l.url, l.label, 'btn btn-small')),
+    ...(share ? [`<a class="btn btn-small btn-share" href="${eventPath(ev)}">Share &amp; sign-up page</a>`] : []),
+  ].join(' ');
   // "tbd": "days" → month known, days not; "tbd": "date" → no date yet (start/end only set the sort order).
   const badge = ev.tbd === 'date' ? ['Date', 'TBD'] : [monthAbbr(ev.start), ev.tbd ? 'TBD' : dayNum(ev.start)];
-  const when = ev.tbd === 'date' ? 'Date TBD'
-    : ev.tbd ? `${monthName(ev.start)} · dates TBD`
-    : `<time datetime="${ev.start}">${dateRange(ev.start, ev.end)}</time>${ev.dateNote ? ` (${esc(ev.dateNote)})` : ''}`;
+  const when = ev.tbd ? esc(whenText(ev)) : `<time datetime="${ev.start}">${esc(whenText(ev))}</time>`;
   return `
 <article class="event${compact ? ' compact' : ''}${ev.tbd ? ' is-tbd' : ''}" data-start="${ev.start}" data-end="${ev.end || ev.start}" id="${ev.start}">
   <div class="event-date" aria-hidden="true"><span>${badge[0]}</span><strong>${badge[1]}</strong></div>
@@ -150,7 +159,7 @@ ${pageHero({ eyebrow: 'Racing & training', title: `${Y} Schedule`, lede: `${esc(
         <button type="button" data-filter="all" aria-pressed="false">All ${Y}</button>
       </div>
       <div class="events" data-events>
-        ${events.map((e) => eventCard(e, { rsvp: true })).join('')}
+        ${events.map((e) => eventCard(e, { rsvp: true, share: true })).join('')}
       </div>
       <p class="muted past-links">Previous years: ${past}</p>
     </div>
@@ -172,7 +181,7 @@ export function archivePages() {
 ${pageHero({ eyebrow: 'Archive', title: `${year} Schedule`, lede: `A look back at the ${year} North America Tasar season. <a href="/${Y}-schedule">See the current schedule →</a>` })}
 <section class="section">
   <div class="wrap narrow">
-    <div class="events archive">${data.events.map((e) => eventCard(e)).join('')}</div>
+    <div class="events archive">${data.events.map((e) => eventCard(e, { share: true })).join('')}</div>
   </div>
 </section>`;
     return { path: `/${year}-schedule`, title: `${year} Schedule`, body };
@@ -198,6 +207,45 @@ ${r.html}
 ${communityStrip()}`;
     return { path: `/${r.slug}`, title: r.title, description: `${r.event}, ${r.dates} — race report${r.author ? ` by ${r.author}` : ''}.`, body };
   });
+}
+
+/* ---------- One page per event (/events/<id>) ---------- */
+// Made automatically for every event, so there's a link to post in WhatsApp:
+// the preview shows the event, and the page has the "Who's going" list.
+// Current-season events get the live sign-up list; past seasons keep their page
+// so links already posted still work.
+
+export function eventPages() {
+  const seasons = [[String(Y), schedule.events, true], ...Object.entries(archive).map(([y, d]) => [y, d.events, false])];
+  const seen = new Set();
+  return seasons.flatMap(([year, events, current]) => events.map((ev) => {
+    const path = eventPath(ev);
+    if (seen.has(path)) throw new Error(`Two events share the page ${path}: give one of them an "id" in the schedule JSON.`);
+    seen.add(path);
+    const when = whenText(ev);
+    const url = site.url + path;
+    const shareText = `${ev.title} · ${when}${ev.location ? ` · ${ev.location}` : ''}\nWho's going? See the list and add your name: ${url}`;
+    const body = `
+${pageHero({ eyebrow: `${year} ${current ? 'schedule' : 'season'}`, title: ev.title, lede: `${esc(when)}${ev.location ? ` · ${esc(ev.location)}` : ''}`, image: img(ev.image) })}
+<section class="section">
+  <div class="wrap narrow">
+    <div class="share-bar">
+      <a class="btn btn-primary" href="https://wa.me/?text=${encodeURIComponent(shareText)}" target="_blank" rel="noopener">Share on WhatsApp</a>
+      <button type="button" class="btn btn-ghost-dark" data-copy="${esc(url)}">Copy link</button>
+    </div>
+    <div class="events${current ? '' : ' archive'}">${eventCard(ev, { rsvp: current })}</div>
+    <p class="past-links"><a class="text-link" href="/${year}-schedule">← Full ${year} schedule</a></p>
+  </div>
+</section>
+${communityStrip()}`;
+    return {
+      path,
+      title: `${ev.title} (${when})`,
+      description: current ? `${when}${ev.location ? `, ${ev.location}` : ''}. See who's going and add your name.` : `${when}${ev.location ? `, ${ev.location}` : ''}.`,
+      ogImage: img(ev.image) || undefined,
+      body,
+    };
+  }));
 }
 
 /* ---------- Boats & Tuning ---------- */

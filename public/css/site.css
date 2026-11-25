@@ -168,6 +168,8 @@ p { margin: 0 0 1em; }
 .rsvp-actions { display: flex; gap: 8px; }
 .rsvp-form .btn { border: 0; font: inherit; font-weight: 700; font-size: .92rem; cursor: pointer; }
 .rsvp-form .btn:disabled { opacity: .6; cursor: default; }
+.share-bar { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 18px; }
+.share-bar button { cursor: pointer; font: inherit; font-weight: 700; background: none; }
 .btn-small.btn-go { background: var(--sail); color: #fff; }
 .btn-small.btn-go:hover { background: var(--sail-dark); }
 .rsvp-hp { position: absolute; left: -9999px; width: 1px; height: 1px; }

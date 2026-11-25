@@ -15,6 +15,7 @@ const all = [
   pages.home(),
   pages.schedulePage(),
   ...pages.archivePages(),
+  ...pages.eventPages(),
   ...pages.reportPages(),
   pages.boatsTuning(),
   pages.findABoat(),
@@ -25,6 +26,7 @@ const all = [
 
 for (const page of all) {
   const file = page.path === '/' ? 'index.html' : `${page.path.slice(1)}.html`;
+  fs.mkdirSync(path.dirname(path.join(OUT, file)), { recursive: true });
   fs.writeFileSync(path.join(OUT, file), layout(page));
   console.log('  ✓', page.path.padEnd(18), '→ dist/' + file);
 }

@@ -29,6 +29,16 @@
     }
   });
 
+  // Event pages: "Copy link" button.
+  document.querySelectorAll('[data-copy]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var url = b.getAttribute('data-copy'), label = b.textContent;
+      function done(ok) { b.textContent = ok ? 'Link copied!' : url; setTimeout(function () { b.textContent = label; }, 2500); }
+      if (navigator.clipboard) navigator.clipboard.writeText(url).then(function () { done(true); }, function () { done(false); });
+      else done(false);
+    });
+  });
+
   // Schedule page: Seattle / Vancouver tabs in the weekly racing box.
   var tabs = Array.prototype.slice.call(document.querySelectorAll('.tabs [role=tab]'));
   function selectTab(tab, focus) {
