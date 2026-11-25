@@ -254,7 +254,7 @@ ${pageHero({ eyebrow: 'Try a Tasar', title: 'Find a Boat', lede: "We're happy to
       <h2>Borrow or charter a fleet boat</h2>
       <p>We have fleet boats to borrow and are happy to set you up with a charter boat for any upcoming regatta. Tasars are sailed by two people with some dinghy experience — we're happy to help you start, come up to speed, and get fast!</p>
       <div class="callout">
-        <p><strong>To borrow or charter a boat</strong>, contact NATA President ${esc(pres.name)}.</p>
+        <p><strong>To borrow or charter a boat</strong>, contact NATA Co-President ${esc(pres.name)}.</p>
         <p><a class="btn btn-primary" href="mailto:${pres.email}?subject=Borrowing%20a%20Tasar">Email ${esc(pres.name.split(' ')[0])}</a></p>
       </div>
       <h3>Buying a boat</h3>
@@ -309,7 +309,7 @@ ${pageHero({ eyebrow: 'Exec committee', title: 'Suggest a website change', lede:
       <label><span>Your name</span><input name="who" maxlength="80" required autocomplete="name"></label>
       <label><span>Committee passcode</span><input name="passcode" type="password" required autocomplete="current-password"></label>
       <label><span>Which page?</span><select name="page">${pagesList.map((p) => `<option>${esc(p)}</option>`).join('')}</select></label>
-      <label class="full"><span>What should change?</span><textarea name="suggestion" rows="7" maxlength="4000" required placeholder="Be specific — e.g. “Move Summertide to Sept 19–20 and add the registration link https://…”, or “Add Chris Lanzinger’s email to the Contact page: …”"></textarea></label>
+      <label class="full"><span>What should change?</span><textarea name="suggestion" rows="7" maxlength="4000" required placeholder="Be specific — e.g. “Move Summertide to Sept 19–20 and add the registration link https://…”, or “Add Kenna Reed’s email to the Contact page: …”"></textarea></label>
       <input name="website" class="rsvp-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
       <p class="full"><button class="btn btn-primary" type="submit">Send suggestion</button></p>
       <p class="full suggest-msg" role="status"></p>

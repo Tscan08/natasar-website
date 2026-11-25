@@ -20,9 +20,9 @@
     "calendarEmbed": "https://calendar.google.com/calendar/embed?src=dc26fa2253a9d144beea82e8db73e4703efb14a7ab13e56fd7604b97987ffec6%40group.calendar.google.com&ctz=America%2FLos_Angeles&mode=AGENDA&showTitle=0&showPrint=0&showTabs=1&showCalendars=0&showTz=0&color=%23fbe983"
   },
   "leaders": [
-    { "name": "Derek Bottles", "role": "NATA President", "email": "derek@derekbottles.com", "image": "leader-derek" },
-    { "name": "Jonathan McKee", "role": "NATA Secretary", "email": "jonathanmckee@msn.com", "image": "leader-jonathan" },
-    { "name": "Chris Lanzinger", "role": "NATA Treasurer", "email": "", "image": "" },
-    { "name": "Alyosha Strum-Palerm", "role": "Tasar Class Chief Measurer", "email": "alyoshasp3@gmail.com", "image": "leader-alyosha" }
+    { "name": "Alyosha Strum-Palerm", "role": "NATA Co-President & Tasar Class Chief Measurer", "email": "alyoshasp3@gmail.com", "image": "leader-alyosha" },
+    { "name": "Tim Scanlon", "role": "NATA Co-President", "email": "", "image": "" },
+    { "name": "Katie Biely", "role": "NATA Secretary", "email": "", "image": "" },
+    { "name": "Kenna Reed", "role": "NATA Treasurer", "email": "", "image": "" }
   ]
 }
