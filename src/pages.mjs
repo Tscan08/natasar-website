@@ -105,7 +105,7 @@ export function home() {
       <h2>A fleet with a Worlds pedigree</h2>
       <p>Tasars have been active in the PNW since the 1980s. Several regional members have won the Worlds, including Jay and Lisa Renehan, Anthony Boscolo and Haley Lane, Carol and Carl Buchan, Dalton and Lindsey Bergan, and — five times — Jonathan and Libby McKee.</p>
       <ul class="timeline">
-        <li><strong>2026</strong> Tasar Worlds in June at Kunigami, Okinawa, Japan. ${extLink('https://bulkhead.jp/2024/01/102096/', 'More')}</li>
+        <li><strong>2026</strong> Tasar Worlds in June at Kunigami, Okinawa, Japan. 4 NATA teams placed in the top 10, including 1st and 2nd! ${extLink('https://bulkhead.jp/2024/01/102096/', 'More')}</li>
         <li><strong>2025</strong> 6 teams went to ${extLink('https://2025.tasarworlds.com/', 'Tasar Worlds')} at Lake Garda, Italy.</li>
         <li><strong>2024</strong> 10 teams went to ${extLink('https://www.tasar.org/worlds/2024-melbourne-worlds.aspx', 'Tasar Worlds')} in Melbourne and took 3 top-10 finishes, including 1st!</li>
         <li><strong>2022</strong> NATA hosted ${extLink('https://www.facebook.com/2022tasarworlds', 'Tasar Worlds in Seattle')}.</li>
