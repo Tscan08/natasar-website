@@ -64,6 +64,10 @@ close the day after an event ends, and past events show a "Who went" list.
   event starts a fresh list**, so if you rename one that already has sign-ups, add
   `"id": "<old id>"` to it in the JSON to keep them.
 - Locally, `npm run dev` runs the same function with an in-memory store.
+- Upstash's free plan deletes databases that go unused, so a daily **Vercel Cron**
+  job (`crons` in `vercel.json`) calls `api/keepalive.js`, which writes one small
+  record. Check it in Vercel → Project → Settings → Cron Jobs. Optionally set a
+  `CRON_SECRET` env var so only Vercel can trigger it.
 
 ## Photos
 
