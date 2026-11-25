@@ -233,3 +233,23 @@ p { margin: 0 0 1em; }
 .footer-links { list-style: none; display: flex; flex-wrap: wrap; gap: 6px 18px; padding: 0; margin: 0; }
 .site-footer a { color: rgba(255,255,255,.85); text-decoration: none; }
 .site-footer a:hover { color: #fff; text-decoration: underline; }
+
+/* ---------- race reports ---------- */
+.prose { font-size: 1.1rem; line-height: 1.7; overflow-wrap: break-word; }
+.prose p { margin: 0 0 1.1em; }
+.prose h2 { margin-top: 1.4em; }
+.prose ul { margin: 0 0 1.2em; padding: 14px 18px 14px 36px; background: var(--sand); border-radius: var(--radius); }
+.prose li + li { margin-top: 2px; }
+.report-back { margin-top: 2em; padding-top: 1.2em; border-top: 1px solid var(--line); }
+
+/* ---------- committee suggestions ---------- */
+.suggest-form { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 16px; background: var(--sand); border-radius: var(--radius); padding: clamp(18px, 4vw, 28px); margin-bottom: 1.4em; }
+.suggest-form .full { grid-column: 1 / -1; margin: 0; }
+.suggest-form label { display: flex; flex-direction: column; gap: 4px; font-weight: 600; color: var(--navy); font-size: .95rem; }
+.suggest-form input, .suggest-form select, .suggest-form textarea { font: inherit; font-size: 1rem; font-weight: 400; padding: 9px 12px; border: 1px solid var(--line); border-radius: 6px; background: #fff; color: var(--ink); min-width: 0; }
+.suggest-form textarea { resize: vertical; line-height: 1.5; }
+.suggest-form button { cursor: pointer; font: inherit; font-weight: 700; }
+.suggest-form button:disabled { opacity: .6; cursor: default; }
+.suggest-msg:empty { display: none; }
+.suggest-msg.ok { color: var(--sea); font-weight: 600; }
+.suggest-msg.err { color: var(--sail-dark); font-weight: 600; }

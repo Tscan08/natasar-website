@@ -4,6 +4,7 @@
   "outputDirectory": "dist",
   "cleanUrls": true,
   "functions": { "api/rsvp.js": { "includeFiles": "data/**" } },
+  "crons": [{ "path": "/api/keepalive", "schedule": "17 15 * * *" }],
   "trailingSlash": false,
   "redirects": [
     { "source": "/home", "destination": "/", "permanent": true },

@@ -1,0 +1,36 @@
+# When Vercel finishes a preview of a claude/issue-N-… branch, post the preview
+# link (and a one-click "open pull request" link) on issue N. GitHub emails it to you.
+name: Preview link
+
+on: deployment_status
+
+jobs:
+  comment:
+    if: github.event.deployment_status.state == 'success' && github.event.deployment.environment != 'Production'
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      contents: read
+    steps:
+      - name: Comment on the suggestion issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          REF: ${{ github.event.deployment.ref }}
+          SHA: ${{ github.event.deployment.sha }}
+          URL: ${{ github.event.deployment_status.environment_url || github.event.deployment_status.target_url }}
+        run: |
+          branch="$REF"
+          # Vercel may report the commit SHA instead of the branch name.
+          if ! printf '%s' "$branch" | grep -q '^claude/'; then
+            branch=$(gh api "repos/$REPO/commits/$SHA/branches-where-head" --jq '.[].name' | grep '^claude/' | head -n1 || true)
+          fi
+          issue=$(printf '%s' "$branch" | sed -nE 's#^claude/issue-([0-9]+)-.*#\1#p')
+          if [ -z "$issue" ]; then echo "Not a Claude suggestion branch ($REF); nothing to do."; exit 0; fi
+
+          body=$(printf '%s\n\n%s\n%s\n\n%s' \
+            "🔍 **Preview ready:** $URL" \
+            "- Looks good? [Open a pull request](https://github.com/$REPO/compare/main...$branch?expand=1) and merge it to publish." \
+            "- Want changes? Reply here with \`@claude\` and what to change." \
+            "<sub>Branch \`$branch\` · commit ${SHA:0:7}</sub>")
+          gh issue comment "$issue" --repo "$REPO" --body "$body"

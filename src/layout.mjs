@@ -33,7 +33,7 @@ export function communityStrip() {
 </section>`;
 }
 
-export function layout({ path, title, description, body, ogImage }) {
+export function layout({ path, title, description, body, ogImage, noindex = false }) {
   const pageTitle = title ? `${title} · North America Tasars` : 'North America Tasars';
   const desc = description || site.description;
   const logo = img('logo');
@@ -50,7 +50,7 @@ export function layout({ path, title, description, body, ogImage }) {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${esc(pageTitle)}</title>
 <meta name="description" content="${esc(desc)}">
-<link rel="canonical" href="${site.url}${path === '/' ? '/' : path}">
+${noindex ? '<meta name="robots" content="noindex">\n' : ''}<link rel="canonical" href="${site.url}${path === '/' ? '/' : path}">
 <meta property="og:type" content="website">
 <meta property="og:title" content="${esc(pageTitle)}">
 <meta property="og:description" content="${esc(desc)}">

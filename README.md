@@ -15,6 +15,7 @@ the live site updates automatically about 30 seconds later.
 | Colors, fonts, layout                    | `public/css/site.css`           |
 | Photos                                   | `data/images.json` + `public/images/` |
 | Past seasons (2024–2026)                 | `data/schedule-archive.json`    |
+| Race reports / regatta write-ups         | `data/reports/*.md`             |
 
 ### Adding or editing an event
 
@@ -73,6 +74,10 @@ close the day after an event ends, and past events show a "Who went" list.
   event starts a fresh list**, so if you rename one that already has sign-ups, add
   `"id": "<old id>"` to it in the JSON to keep them.
 - Locally, `npm run dev` runs the same function with an in-memory store.
+- Upstash's free plan deletes databases that go unused, so a daily **Vercel Cron**
+  job (`crons` in `vercel.json`) calls `api/keepalive.js`, which writes one small
+  record. Check it in Vercel → Project → Settings → Cron Jobs. Optionally set a
+  `CRON_SECRET` env var so only Vercel can trigger it.
 
 ## Photos
 
@@ -113,10 +118,65 @@ Old URLs keep working: `/home` redirects to `/`, and `/2026-schedule`,
 `/boats-tuning`, `/find-a-boat`, `/contact-us`, `/2025-schedule` and
 `/2024-schedule` are unchanged.
 
-## Not yet migrated
+## Committee suggestions → Claude drafts → you review
 
-The old site has regatta write-up pages that were linked from the 2024/2025
-schedules (e.g. `/pssr-report`, `/lake-crescent-report`, `/west-sound-report`,
-`/skamania-coves-report`, `/jericho-north-americans`, `/summertide-2024`,
-`/turkey-bowl-2025`). They'll stop working when the domain moves unless they're
-ported — add them as pages in `src/pages.mjs`.
+Exec committee members send ideas at **natasar.org/suggest** (not in the menu;
+protected by a shared passcode). Each one becomes a GitHub issue labelled
+`suggestion` + `claude`, then:
+
+1. The **Claude** workflow (`.github/workflows/claude.yml`) makes the change on a new
+   `claude/issue-N-…` branch, following `CLAUDE.md`. It never touches `main`.
+2. Vercel builds a preview of that branch, and the **Preview link** workflow posts
+   the URL on the issue (GitHub emails you).
+3. You review the preview, then either click **Open a pull request** in that comment
+   and merge it to publish, or reply on the issue with `@claude …` to ask for changes.
+   Close the issue to reject it.
+
+Committee members with GitHub accounts can also open an issue with the *Website
+suggestion* template; add the `claude` label yourself to start a draft.
+
+### One-time setup
+
+1. **Claude GitHub app + key:** install the Claude GitHub app on this repo at
+   <https://github.com/apps/claude>, then add one repository secret (GitHub → repo →
+   Settings → Secrets and variables → Actions): either `ANTHROPIC_API_KEY` (from
+   console.anthropic.com, pay per use) or `CLAUDE_CODE_OAUTH_TOKEN` (run
+   `claude setup-token` in a terminal to use your Claude subscription).
+   Running `/install-github-app` inside the `claude` terminal app does both steps for you.
+2. **GitHub token for the form:** create a fine-grained token at
+   <https://github.com/settings/personal-access-tokens/new> — repository access *only
+   this repo*, permission **Issues: Read and write**.
+3. **Vercel env vars** (Project → Settings → Environment Variables), then redeploy:
+   `GITHUB_SUGGEST_TOKEN` = that token, `SUGGEST_PASSCODE` = a passcode to share with the
+   committee. Optional: `SUGGESTIONS_AUTOBUILD=false` to have suggestions wait for you to
+   add the `claude` label instead of drafting automatically.
+4. **Protect main (recommended):** GitHub → Settings → Branches → add a rule for `main`
+   requiring a pull request, so nothing reaches the live site without your merge.
+
+Vercel previews may require a Vercel login to view (Project → Settings → Deployment
+Protection). That's fine for you; turn it off for previews if committee members
+should see them too.
+
+## Race reports
+
+Each regatta write-up is a Markdown file in `data/reports/`, and the file name is
+its web address (`data/reports/pssr-report.md` → `/pssr-report`, same URLs as the
+old site). To add one, copy an existing file and edit it on github.com:
+
+```markdown
+---
+title: Summertide 2026
+event: Summertide at Hood Canal
+dates: September 19–20, 2026
+author: Your Name
+start: 2026-09-19
+---
+
+First paragraph. Blank lines separate paragraphs. [Link text](https://…), **bold**.
+
+- Lines starting with "- " make a list (handy for results)
+```
+
+`start` is used for ordering and for the "Back to the <year> schedule" link. To show a
+**Race report** button on the event, add `{ "label": "Race report", "url": "/summertide-2026" }`
+to that event's `links`.

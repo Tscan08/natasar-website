@@ -15,9 +15,11 @@ const all = [
   pages.home(),
   pages.schedulePage(),
   ...pages.archivePages(),
+  ...pages.reportPages(),
   pages.boatsTuning(),
   pages.findABoat(),
   pages.contact(),
+  pages.suggest(),
   pages.notFound(),
 ];
 

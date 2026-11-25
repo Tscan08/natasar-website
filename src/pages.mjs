@@ -1,5 +1,5 @@
 // Page content. Edit text here; edit the schedule in data/schedule-<currentYear>.json.
-import { site, esc, img, dateRange, monthAbbr, monthName, dayNum, extLink, readJSON } from './lib.mjs';
+import { site, esc, img, dateRange, monthAbbr, monthName, dayNum, extLink, readJSON, readReports } from './lib.mjs';
 import { communityStrip } from './layout.mjs';
 import { eventId } from './event-id.mjs';
 
@@ -169,6 +169,27 @@ ${pageHero({ eyebrow: 'Archive', title: `${year} Schedule`, lede: `A look back a
   });
 }
 
+/* ---------- Race reports (data/reports/*.md) ---------- */
+
+export function reportPages() {
+  return readReports().map((r) => {
+    const year = r.start.slice(0, 4);
+    const back = archive[year] ? `/${year}-schedule` : `/${Y}-schedule`;
+    const body = `
+${pageHero({ eyebrow: `Race report · ${year}`, title: r.title, lede: `Write-up for ${esc(r.event)}, ${esc(r.dates)}${r.author ? ` · by ${esc(r.author)}` : ''}` })}
+<section class="section">
+  <div class="wrap narrow">
+    <article class="prose">
+${r.html}
+    </article>
+    <p class="muted report-back"><a href="${back}">← Back to the ${year} schedule</a></p>
+  </div>
+</section>
+${communityStrip()}`;
+    return { path: `/${r.slug}`, title: r.title, description: `${r.event}, ${r.dates} — race report${r.author ? ` by ${r.author}` : ''}.`, body };
+  });
+}
+
 /* ---------- Boats & Tuning ---------- */
 
 export function boatsTuning() {
@@ -274,6 +295,29 @@ ${pageHero({ eyebrow: 'North America Tasar Association', title: 'Contact Us', le
 </section>
 ${communityStrip()}`;
   return { path: '/contact-us', title: 'Contact Us', description: 'Contact the North America Tasar Association leadership.', body };
+}
+
+/* ---------- Committee suggestions (not linked in the nav) ---------- */
+
+export function suggest() {
+  const pagesList = [...site.nav.map((n) => n.label), 'Race reports', 'Past schedules', 'Whole site / something new'];
+  const body = `
+${pageHero({ eyebrow: 'Exec committee', title: 'Suggest a website change', lede: 'Describe what you’d like changed. A draft is prepared automatically and reviewed before anything goes live on the site.' })}
+<section class="section">
+  <div class="wrap narrow">
+    <form class="suggest-form" data-suggest>
+      <label><span>Your name</span><input name="who" maxlength="80" required autocomplete="name"></label>
+      <label><span>Committee passcode</span><input name="passcode" type="password" required autocomplete="current-password"></label>
+      <label><span>Which page?</span><select name="page">${pagesList.map((p) => `<option>${esc(p)}</option>`).join('')}</select></label>
+      <label class="full"><span>What should change?</span><textarea name="suggestion" rows="7" maxlength="4000" required placeholder="Be specific — e.g. “Move Summertide to Sept 19–20 and add the registration link https://…”, or “Add Chris Lanzinger’s email to the Contact page: …”"></textarea></label>
+      <input name="website" class="rsvp-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <p class="full"><button class="btn btn-primary" type="submit">Send suggestion</button></p>
+      <p class="full suggest-msg" role="status"></p>
+    </form>
+    <p class="muted">Tips: one change per suggestion works best. Include exact wording, dates and links. Photos can’t be attached here yet — email them and mention it in your suggestion.</p>
+  </div>
+</section>`;
+  return { path: '/suggest', title: 'Suggest a change', description: 'Website suggestions from the NATA exec committee.', body, noindex: true };
 }
 
 export function notFound() {
