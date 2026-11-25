@@ -8,6 +8,11 @@ export const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '
 export const readJSON = (rel) => JSON.parse(fs.readFileSync(path.join(ROOT, rel), 'utf8'));
 
 export const site = readJSON('data/site.json');
+// The site's public address, used in link previews and canonical links. On Vercel it
+// follows the project's production domain automatically (so it switches over once
+// natasar.org is connected); set SITE_URL to override. Locally, site.json's "url".
+const vercelDomain = process.env.VERCEL_PROJECT_PRODUCTION_URL;
+site.url = (process.env.SITE_URL || (vercelDomain ? `https://${vercelDomain}` : site.url)).replace(/\/$/, '');
 const imageMap = readJSON('data/images.json');
 
 /** Escape text for safe insertion into HTML. */

@@ -224,13 +224,13 @@ export function eventPages() {
     seen.add(path);
     const when = whenText(ev);
     const url = site.url + path;
-    const shareText = `${ev.title} · ${when}${ev.location ? ` · ${ev.location}` : ''}\nWho's going? See the list and add your name: ${url}`;
+    const shareText = `${ev.title} · ${when}${ev.location ? ` · ${ev.location}` : ''}\nWho's going? See the list and add your name: `;
     const body = `
 ${pageHero({ eyebrow: `${year} ${current ? 'schedule' : 'season'}`, title: ev.title, lede: `${esc(when)}${ev.location ? ` · ${esc(ev.location)}` : ''}`, image: img(ev.image) })}
 <section class="section">
   <div class="wrap narrow">
-    <div class="share-bar">
-      <a class="btn btn-primary" href="https://wa.me/?text=${encodeURIComponent(shareText)}" target="_blank" rel="noopener">Share on WhatsApp</a>
+    <div class="share-bar" data-share-path="${esc(path)}">
+      <a class="btn btn-primary" href="https://wa.me/?text=${encodeURIComponent(shareText + url)}" data-share-text="${esc(shareText)}" target="_blank" rel="noopener">Share on WhatsApp</a>
       <button type="button" class="btn btn-ghost-dark" data-copy="${esc(url)}">Copy link</button>
     </div>
     <div class="events${current ? '' : ' archive'}">${eventCard(ev, { rsvp: current })}</div>

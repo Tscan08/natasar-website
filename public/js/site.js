@@ -29,6 +29,15 @@
     }
   });
 
+  // Event pages: share links point at whatever address the site is being viewed on.
+  document.querySelectorAll('[data-share-path]').forEach(function (bar) {
+    var url = location.origin + bar.getAttribute('data-share-path');
+    var wa = bar.querySelector('[data-share-text]');
+    if (wa) wa.href = 'https://wa.me/?text=' + encodeURIComponent(wa.getAttribute('data-share-text') + url);
+    var copy = bar.querySelector('[data-copy]');
+    if (copy) copy.setAttribute('data-copy', url);
+  });
+
   // Event pages: "Copy link" button.
   document.querySelectorAll('[data-copy]').forEach(function (b) {
     b.addEventListener('click', function () {
