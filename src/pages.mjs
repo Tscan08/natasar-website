@@ -130,8 +130,18 @@ ${pageHero({ eyebrow: 'Racing & training', title: `${Y} Schedule`, lede: `${esc(
   <div class="wrap schedule-layout">
     <div>
       <div class="weekly">
-        <h2>Weekly tune-up &amp; racing</h2>
-        <p>Drop in for <strong>“Tasar Tuesday”</strong> and CYC dinghy racing on <strong>Thursday evenings</strong> at Shilshole Marina in Seattle from March to September. Tuesdays are informal tuning sessions to help each other improve boat speed and handling. The Thursday evening CYC racing series is a great way to practice racing.</p>
+        <h2>Weekly racing &amp; tune-up</h2>
+        <div class="tabs" role="tablist" aria-label="Choose a fleet">
+          <button type="button" role="tab" id="tab-seattle" aria-controls="panel-seattle" aria-selected="true">Seattle</button>
+          <button type="button" role="tab" id="tab-vancouver" aria-controls="panel-vancouver" aria-selected="false" tabindex="-1">Vancouver, BC</button>
+        </div>
+        <div class="tab-panel" role="tabpanel" id="panel-seattle" aria-labelledby="tab-seattle">
+          <p><strong>Thursday night racing.</strong> ${extLink('https://www.cycseattle.org/', 'CYC Seattle')} (Corinthian Yacht Club) runs Thursday evening racing out of Shilshole Bay Marina, with courses set on Puget Sound just off the marina. The season runs from spring through summer as a few short series, and dinghy classes, Tasars included, race together. It's the best regular racing practice in town. Register through CYC.</p>
+          <p><strong>“Tasar Tuesday.”</strong> Drop in on Tuesday evenings at Shilshole Bay Marina from March to September for informal tuning sessions, where we help each other improve boat speed and handling. All levels welcome.</p>
+        </div>
+        <div class="tab-panel" role="tabpanel" id="panel-vancouver" aria-labelledby="tab-vancouver" hidden>
+          <p><strong>Jericho Sailing Centre.</strong> Vancouver's Tasar fleet sails out of the ${extLink('https://jsca.bc.ca/', 'Jericho Sailing Centre')} on English Bay, where the Tasar is one of the most popular double-handed fleets. Jericho runs weekly club racing through the season, including a Sunday afternoon series on non-regatta weekends, and hosts the Tasar BC Championships each September. Check the JSCA events calendar for this season's dates.</p>
+        </div>
         <p>Join the ${extLink(c.seattleGroup, 'Seattle Google group')} for practice coordination, or the ${extLink(c.googleGroup, 'North America Google group')} — either gives you access to the ${extLink(c.calendarSubscribe, 'Google calendar')}. <a href="${c.whatsappRequest}">Request a WhatsApp invitation</a> to the NW Tasar Group for day-to-day updates.</p>
       </div>
 

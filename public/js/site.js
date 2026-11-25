@@ -29,6 +29,25 @@
     }
   });
 
+  // Schedule page: Seattle / Vancouver tabs in the weekly racing box.
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.tabs [role=tab]'));
+  function selectTab(tab, focus) {
+    tabs.forEach(function (t) {
+      var on = t === tab;
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+    });
+    if (focus) tab.focus();
+  }
+  tabs.forEach(function (t, i) {
+    t.addEventListener('click', function () { selectTab(t); });
+    t.addEventListener('keydown', function (e) {
+      var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+      if (d) { e.preventDefault(); selectTab(tabs[(i + d + tabs.length) % tabs.length], true); }
+    });
+  });
+
   // Schedule page: highlight next event, filter upcoming/all.
   var list = document.querySelector('[data-events]');
   if (list) {
