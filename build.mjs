@@ -19,6 +19,7 @@ const all = [
   pages.boatsTuning(),
   pages.findABoat(),
   pages.contact(),
+  pages.suggest(),
   pages.notFound(),
 ];
 

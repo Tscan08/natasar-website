@@ -1,0 +1,49 @@
+# Claude makes website changes from suggestions.
+#  - An issue gets the "claude" label (added automatically for /suggest submissions,
+#    or by you on any issue) → Claude makes the change on a new claude/issue-N-… branch.
+#  - You comment "@claude …" on that issue or its pull request → Claude revises it.
+# Claude never touches main; changes go live only when you merge.
+name: Claude
+
+on:
+  issues:
+    types: [labeled]
+  issue_comment:
+    types: [created]
+  pull_request_review_comment:
+    types: [created]
+
+concurrency:
+  group: claude-${{ github.event.issue.number || github.event.pull_request.number }}
+  cancel-in-progress: false
+
+jobs:
+  claude:
+    if: >-
+      (github.event_name == 'issues' && github.event.label.name == 'claude') ||
+      (github.event_name != 'issues' && contains(github.event.comment.body, '@claude') &&
+       contains(fromJSON('["OWNER","MEMBER","COLLABORATOR"]'), github.event.comment.author_association))
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - uses: anthropics/claude-code-action@v1
+        with:
+          # Add ONE of these as a repository secret (Settings → Secrets and variables → Actions).
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          claude_args: >-
+            --max-turns 40
+            --allowedTools "Bash(node build.mjs),Bash(npm run build),Bash(git diff:*),Bash(git status)"

@@ -1,0 +1,17 @@
+name: Website suggestion
+description: Suggest a change to natasar.org. Add the "claude" label to have Claude draft it.
+title: "Website suggestion: "
+labels: [suggestion]
+body:
+  - type: input
+    id: page
+    attributes:
+      label: Which page?
+      placeholder: e.g. 2026 Schedule, Contact, or a link
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: What should change?
+      description: Be specific — exact wording, dates, links, or photos help.
+    validations:
+      required: true

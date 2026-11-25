@@ -104,6 +104,45 @@ Old URLs keep working: `/home` redirects to `/`, and `/2026-schedule`,
 `/boats-tuning`, `/find-a-boat`, `/contact-us`, `/2025-schedule` and
 `/2024-schedule` are unchanged.
 
+## Committee suggestions → Claude drafts → you review
+
+Exec committee members send ideas at **natasar.org/suggest** (not in the menu;
+protected by a shared passcode). Each one becomes a GitHub issue labelled
+`suggestion` + `claude`, then:
+
+1. The **Claude** workflow (`.github/workflows/claude.yml`) makes the change on a new
+   `claude/issue-N-…` branch, following `CLAUDE.md`. It never touches `main`.
+2. Vercel builds a preview of that branch, and the **Preview link** workflow posts
+   the URL on the issue (GitHub emails you).
+3. You review the preview, then either click **Open a pull request** in that comment
+   and merge it to publish, or reply on the issue with `@claude …` to ask for changes.
+   Close the issue to reject it.
+
+Committee members with GitHub accounts can also open an issue with the *Website
+suggestion* template; add the `claude` label yourself to start a draft.
+
+### One-time setup
+
+1. **Claude GitHub app + key:** install the Claude GitHub app on this repo at
+   <https://github.com/apps/claude>, then add one repository secret (GitHub → repo →
+   Settings → Secrets and variables → Actions): either `ANTHROPIC_API_KEY` (from
+   console.anthropic.com, pay per use) or `CLAUDE_CODE_OAUTH_TOKEN` (run
+   `claude setup-token` in a terminal to use your Claude subscription).
+   Running `/install-github-app` inside the `claude` terminal app does both steps for you.
+2. **GitHub token for the form:** create a fine-grained token at
+   <https://github.com/settings/personal-access-tokens/new> — repository access *only
+   this repo*, permission **Issues: Read and write**.
+3. **Vercel env vars** (Project → Settings → Environment Variables), then redeploy:
+   `GITHUB_SUGGEST_TOKEN` = that token, `SUGGEST_PASSCODE` = a passcode to share with the
+   committee. Optional: `SUGGESTIONS_AUTOBUILD=false` to have suggestions wait for you to
+   add the `claude` label instead of drafting automatically.
+4. **Protect main (recommended):** GitHub → Settings → Branches → add a rule for `main`
+   requiring a pull request, so nothing reaches the live site without your merge.
+
+Vercel previews may require a Vercel login to view (Project → Settings → Deployment
+Protection). That's fine for you; turn it off for previews if committee members
+should see them too.
+
 ## Race reports
 
 Each regatta write-up is a Markdown file in `data/reports/`, and the file name is

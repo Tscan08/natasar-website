@@ -52,6 +52,40 @@
     if (!upcoming.length) nextUp.querySelector('.next-empty').hidden = false;
   }
 
+  // /suggest: committee suggestion form → /api/suggest (creates a GitHub issue).
+  var suggestForm = document.querySelector('[data-suggest]');
+  if (suggestForm && window.fetch) {
+    var keep = function (k, v) { try { if (v === undefined) return localStorage.getItem(k) || ''; localStorage.setItem(k, v); } catch (e) { return ''; } };
+    suggestForm.who.value = keep('suggest-name');
+    suggestForm.passcode.value = keep('suggest-passcode');
+    suggestForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var f = suggestForm, btn = f.querySelector('button'), msg = f.querySelector('.suggest-msg');
+      btn.disabled = true;
+      msg.className = 'full suggest-msg';
+      msg.textContent = 'Sending…';
+      fetch('/api/suggest', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: f.who.value, passcode: f.passcode.value, page: f.page.value, suggestion: f.suggestion.value, website: f.website.value })
+      }).then(function (r) {
+        return r.json().catch(function () { return {}; }).then(function (d) {
+          if (!r.ok) throw new Error(d.error || 'Something went wrong — please try again.');
+          return d;
+        });
+      }).then(function (d) {
+        keep('suggest-name', f.who.value);
+        keep('suggest-passcode', f.passcode.value);
+        f.suggestion.value = '';
+        msg.classList.add('ok');
+        msg.textContent = 'Thanks! Your suggestion was sent (#' + d.number + '). A preview will be prepared and reviewed before it goes live.';
+      }).catch(function (err) {
+        msg.classList.add('err');
+        msg.textContent = err.message;
+      }).then(function () { btn.disabled = false; });
+    });
+  }
+
   // Schedule page: "who's going" sign-ups, stored by /api/rsvp. If the API is
   // unavailable the boxes simply stay hidden.
   var rsvpBoxes = document.querySelectorAll('[data-rsvp]');

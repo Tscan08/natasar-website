@@ -1,5 +1,5 @@
-// Tiny local preview server for dist/ (mimics Vercel's cleanUrls and runs /api/rsvp
-// with in-memory storage). No dependencies.
+// Tiny local preview server for dist/ (mimics Vercel's cleanUrls and runs the api/
+// functions, with in-memory storage for sign-ups). No dependencies.
 import http from 'node:http';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -11,7 +11,8 @@ const TYPES = { '.html': 'text/html; charset=utf-8', '.css': 'text/css', '.js': 
 
 http.createServer(async (req, res) => {
   let url = decodeURIComponent(req.url.split('?')[0]);
-  if (url === '/api/rsvp') return api(req, res);
+  const fn = url.match(/^\/api\/([a-z-]+)$/);
+  if (fn && fs.existsSync(path.join(DIST, '../api', fn[1] + '.js'))) return api(req, res, fn[1]);
   if (url === '/home') { res.writeHead(301, { Location: '/' }); return res.end(); }
   const candidates = url === '/' ? ['index.html'] : [url.slice(1), url.slice(1) + '.html'];
   for (const c of candidates) {
@@ -26,12 +27,12 @@ http.createServer(async (req, res) => {
 }).listen(PORT, () => console.log(`Preview at http://localhost:${PORT}`));
 
 // Minimal stand-in for Vercel's Node function helpers (req.body, res.status().json()).
-async function api(req, res) {
+async function api(req, res, name) {
   let raw = '';
   for await (const chunk of req) raw += chunk;
   try { req.body = raw ? JSON.parse(raw) : {}; } catch { req.body = {}; }
   res.status = (code) => { res.statusCode = code; return res; };
   res.json = (obj) => { res.setHeader('Content-Type', 'application/json'); res.end(JSON.stringify(obj)); };
-  const { default: handler } = await import('../api/rsvp.js');
+  const { default: handler } = await import(`../api/${name}.js`);
   return handler(req, res);
 }
