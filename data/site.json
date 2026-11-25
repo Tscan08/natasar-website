@@ -3,10 +3,10 @@
   "shortName": "NATA",
   "url": "https://www.natasar.org",
   "description": "The North America Tasar fleet — high-performance double-handed dinghy racing in the Pacific Northwest. Borrow a boat and join our practices and regattas.",
-  "currentYear": 2026,
+  "currentYear": 2027,
   "nav": [
     { "label": "Home", "href": "/" },
-    { "label": "2026 Schedule", "href": "/2026-schedule" },
+    { "label": "2027 Schedule", "href": "/2027-schedule" },
     { "label": "Boats & Tuning", "href": "/boats-tuning" },
     { "label": "Find a Boat", "href": "/find-a-boat" },
     { "label": "Contact", "href": "/contact-us" }

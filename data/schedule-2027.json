@@ -1,0 +1,64 @@
+{
+  "year": 2027,
+  "intro": "Tasar North America 2027 schedule, headlined by the North American Championships at Harrison Hot Springs in September.",
+  "note": "Dates marked TBD will be confirmed as host clubs publish their calendars.",
+  "events": [
+    {
+      "start": "2027-04-01", "end": "2027-04-30", "tbd": "days",
+      "title": "Puget Sound Spring Regatta (PSSR)",
+      "location": "CYC Seattle, Shilshole Bay Marina",
+      "description": "CYC hosts a spring regatta for small boats out of the clubhouse at the north end of Shilshole Bay Marina in Seattle. Exact dates TBD.",
+      "links": [],
+      "image": "ev-psod"
+    },
+    {
+      "start": "2027-06-19", "end": "2027-06-20", "dateNote": "target",
+      "title": "Cathlamet",
+      "location": "Cathlamet, WA",
+      "description": "Racing at Cathlamet on the Columbia River. These are target dates; details to follow.",
+      "links": []
+    },
+    {
+      "start": "2027-07-01", "end": "2027-07-23", "tbd": "date",
+      "title": "Clinic / Fleet Building Event",
+      "location": "Location TBD",
+      "description": "A clinic and fleet-building event to help new and returning sailors get up to speed and meet the fleet. Date and location to be announced.",
+      "links": [],
+      "image": "ev-try-out",
+      "tag": "Newcomers welcome"
+    },
+    {
+      "start": "2027-07-24", "end": "2027-07-25",
+      "title": "Skamania Coves Invitational Regatta",
+      "location": "Skamania Coves Resort, Stevenson, WA",
+      "description": "The annual Invitational regatta for Tasars and ILCA Masters, hosted by CGRA at the stunning Skamania Coves Resort — a beautiful 30-acre waterfront property on the Columbia River. A not-to-miss event!",
+      "links": [],
+      "image": "ev-skamania"
+    },
+    {
+      "start": "2027-09-04", "end": "2027-09-05",
+      "title": "Harrison Hot Springs Regatta + Tasar North American Championships",
+      "location": "Harrison Hot Springs, BC, Canada",
+      "description": "Travel to Harrison Hot Springs in British Columbia for a one-design regatta that will also serve as the Tasar North American Championships.",
+      "links": [],
+      "image": "ev-harrison",
+      "tag": "Championship"
+    },
+    {
+      "start": "2027-09-06", "end": "2027-09-30", "tbd": "days",
+      "title": "Puget Sound Sailing Championship (PSSC)",
+      "location": "CYC Seattle, Shilshole Bay Marina",
+      "description": "PSSC Small Boats regatta hosted at CYC Seattle out of their clubhouse at the north end of Shilshole Bay Marina. Exact dates TBD.",
+      "links": [],
+      "image": "ev-pssc"
+    },
+    {
+      "start": "2027-11-01", "end": "2027-11-30", "tbd": "days",
+      "title": "Turkey Bowl",
+      "location": "CYC Seattle, Shilshole Bay Marina",
+      "description": "Turkey Bowl Regatta hosted at CYC Seattle out of their clubhouse at the north end of Shilshole Bay Marina. Exact dates TBD.",
+      "links": [],
+      "image": "ev-turkey-bowl"
+    }
+  ]
+}

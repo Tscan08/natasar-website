@@ -37,6 +37,7 @@ export function dateRange(start, end) {
   return `${MONTHS[a.m]} ${a.day} – ${MONTHS[b.m]} ${b.day}`;
 }
 export const monthAbbr = (d) => MONTHS[parse(d).m];
+export const monthName = (d) => new Date(Date.UTC(2000, parse(d).m, 1)).toLocaleString('en-US', { month: 'long', timeZone: 'UTC' });
 export const dayNum = (d) => parse(d).day;
 
 export const extLink = (url, label, cls = '') =>

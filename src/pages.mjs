@@ -1,11 +1,11 @@
-// Page content. Edit text here; edit the schedule in data/schedule-2026.json.
-import { site, esc, img, dateRange, monthAbbr, dayNum, extLink, readJSON } from './lib.mjs';
+// Page content. Edit text here; edit the schedule in data/schedule-<currentYear>.json.
+import { site, esc, img, dateRange, monthAbbr, monthName, dayNum, extLink, readJSON } from './lib.mjs';
 import { communityStrip } from './layout.mjs';
 import { eventId } from './event-id.mjs';
 
-const schedule = readJSON('data/schedule-2026.json');
-const archive = readJSON('data/schedule-archive.json');
 const Y = site.currentYear;
+const schedule = readJSON(`data/schedule-${Y}.json`);
+const archive = readJSON('data/schedule-archive.json');
 
 /* ---------- shared bits ---------- */
 
@@ -23,11 +23,16 @@ function pageHero({ eyebrow, title, lede, image }) {
 function eventCard(ev, { compact = false, rsvp = false } = {}) {
   const image = img(ev.image);
   const links = (ev.links || []).map((l) => extLink(l.url, l.label, 'btn btn-small')).join(' ');
+  // "tbd": "days" → month known, days not; "tbd": "date" → no date yet (start/end only set the sort order).
+  const badge = ev.tbd === 'date' ? ['Date', 'TBD'] : [monthAbbr(ev.start), ev.tbd ? 'TBD' : dayNum(ev.start)];
+  const when = ev.tbd === 'date' ? 'Date TBD'
+    : ev.tbd ? `${monthName(ev.start)} · dates TBD`
+    : `<time datetime="${ev.start}">${dateRange(ev.start, ev.end)}</time>${ev.dateNote ? ` (${esc(ev.dateNote)})` : ''}`;
   return `
-<article class="event${compact ? ' compact' : ''}" data-start="${ev.start}" data-end="${ev.end || ev.start}" id="${ev.start}">
-  <div class="event-date" aria-hidden="true"><span>${monthAbbr(ev.start)}</span><strong>${dayNum(ev.start)}</strong></div>
+<article class="event${compact ? ' compact' : ''}${ev.tbd ? ' is-tbd' : ''}" data-start="${ev.start}" data-end="${ev.end || ev.start}" id="${ev.start}">
+  <div class="event-date" aria-hidden="true"><span>${badge[0]}</span><strong>${badge[1]}</strong></div>
   <div class="event-body">
-    <p class="event-meta"><time datetime="${ev.start}">${dateRange(ev.start, ev.end)}</time>${ev.tag ? ` <span class="tag">${esc(ev.tag)}</span>` : ''}<span class="status"></span></p>
+    <p class="event-meta"><span>${when}</span>${ev.tag ? ` <span class="tag">${esc(ev.tag)}</span>` : ''}<span class="status"></span></p>
     <h3>${esc(ev.title)}</h3>
     ${ev.location ? `<p class="event-loc">${esc(ev.location)}</p>` : ''}
     ${ev.description && !compact ? `<p>${esc(ev.description)}</p>` : ''}

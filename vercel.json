@@ -7,6 +7,6 @@
   "trailingSlash": false,
   "redirects": [
     { "source": "/home", "destination": "/", "permanent": true },
-    { "source": "/schedule", "destination": "/2026-schedule", "permanent": false }
+    { "source": "/schedule", "destination": "/2027-schedule", "permanent": false }
   ]
 }

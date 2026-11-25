@@ -9,16 +9,16 @@ the live site updates automatically about 30 seconds later.
 
 | To change…                               | Edit this file                  |
 |------------------------------------------|---------------------------------|
-| Events on the 2026 schedule              | `data/schedule-2026.json`       |
+| Events on the 2027 schedule              | `data/schedule-2027.json`       |
 | Leaders, emails, Google group / Facebook links, nav | `data/site.json`     |
 | Page text (home, boats & tuning, find a boat, contact) | `src/pages.mjs`    |
 | Colors, fonts, layout                    | `public/css/site.css`           |
 | Photos                                   | `data/images.json` + `public/images/` |
-| Past seasons (2024, 2025)                | `data/schedule-archive.json`    |
+| Past seasons (2024–2026)                 | `data/schedule-archive.json`    |
 
 ### Adding or editing an event
 
-Each event in `data/schedule-2026.json` looks like this:
+Each event in `data/schedule-2027.json` looks like this:
 
 ```json
 {
@@ -32,7 +32,17 @@ Each event in `data/schedule-2026.json` looks like this:
 }
 ```
 
-`links`, `image` and `tag` are optional. Events are sorted by date automatically,
+`links`, `image` and `tag` are optional.
+
+**Dates not set yet?** Add `"tbd"`:
+
+- `"tbd": "days"`: the month is known but not the days. Set `start`/`end` to the first and
+  last day of that month; the card shows e.g. "April · dates TBD".
+- `"tbd": "date"`: no date at all yet. `start`/`end` only control where the event sorts;
+  the card shows "Date TBD".
+- `"dateNote": "target"` adds a note after a real date, e.g. "Jun 19–20 (target)".
+
+When the date is confirmed, set the real `start`/`end` and remove `tbd`. Events are sorted by date automatically,
 and visitors' browsers mark past events as **Completed** and highlight the
 **Next up** event, so the page never goes stale between edits.
 
@@ -41,10 +51,10 @@ changes*). Vercel rebuilds on every commit to `main`.
 
 ### Starting a new season
 
-1. Move the finished season's events into `data/schedule-archive.json` under a new `"2026"` key.
-2. Rename `data/schedule-2026.json` → `schedule-2027.json` (and update the import in `src/pages.mjs`), fill in the new events.
-3. In `data/site.json`, set `"currentYear": 2027` and update the nav label/link.
-4. In `vercel.json`, point the `/schedule` redirect at `/2027-schedule`.
+1. Move the finished season's events into `data/schedule-archive.json` under a new `"2027"` key.
+2. Rename `data/schedule-2027.json` → `schedule-2028.json` and fill in the new events (`src/pages.mjs` picks the file from `currentYear`).
+3. In `data/site.json`, set `"currentYear": 2028` and update the nav label/link.
+4. In `vercel.json`, point the `/schedule` redirect at `/2028-schedule`.
 
 ## "Who's going" sign-ups
 
