@@ -2,8 +2,10 @@
 // Connect it in Vercel → Project → Storage → Upstash (Redis); that sets the env vars below.
 // Without them, local dev keeps sign-ups in memory (lost on restart).
 // Each event is a Redis hash "rsvp:<event id>" of entry id → JSON entry.
-const url = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL;
-const token = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN;
+// Vercel may add a custom prefix (e.g. STORAGE_KV_REST_API_URL), so match on the suffix.
+const urlKey = Object.keys(process.env).find((k) => /(^|_)(KV_REST_API_URL|UPSTASH_REDIS_REST_URL)$/.test(k));
+const url = urlKey && process.env[urlKey];
+const token = urlKey && process.env[urlKey.replace(/URL$/, 'TOKEN')];
 
 async function pipeline(cmds) {
   const res = await fetch(url.replace(/\/$/, '') + '/pipeline', {
