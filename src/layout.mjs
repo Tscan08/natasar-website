@@ -69,7 +69,7 @@ ${og ? `<meta property="og:image" content="${esc(absolute(og))}">` : ''}
   <div class="wrap header-inner">
     <a class="brand" href="/">
       ${logo ? `<img src="${esc(logo)}" alt="" width="44" height="44">` : ''}
-      <span><strong>North America Tasars</strong><small>North America Tasar Association</small></span>
+      <span><strong>North America Tasar Association</strong></span>
     </a>
     <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav"><span class="sr">Menu</span><span class="bars" aria-hidden="true"></span></button>
     <nav id="site-nav" aria-label="Main"><ul>${navItems}</ul></nav>
