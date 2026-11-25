@@ -12,6 +12,13 @@
       "image": "ev-psod"
     },
     {
+      "start": "2027-05-01", "end": "2027-05-31", "tbd": "days",
+      "title": "Seattle Women's Tasar Invite",
+      "location": "Seattle, WA",
+      "description": "An invitational regatta for women Tasar sailors in Seattle. Exact dates and details TBD.",
+      "links": []
+    },
+    {
       "start": "2027-06-19", "end": "2027-06-20", "dateNote": "target",
       "title": "Cathlamet",
       "location": "Cathlamet, WA",
