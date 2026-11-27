@@ -54,10 +54,11 @@
     },
     {
       "start": "2027-09-11", "end": "2027-09-12",
-      "title": "Tasar BC Regatta",
+      "title": "Tasar BC Championships",
       "location": "Jericho Sailing Centre, Vancouver, BC",
-      "description": "The annual Tasar BC regatta at the Jericho Sailing Centre, racing on English Bay in Vancouver.",
-      "links": [{ "label": "Jericho Sailing Centre", "url": "https://jsca.bc.ca/" }]
+      "description": "The annual Tasar BC Championships at the Jericho Sailing Centre, racing on English Bay in Vancouver.",
+      "links": [{ "label": "Jericho Sailing Centre", "url": "https://jsca.bc.ca/" }],
+      "tag": "Championship"
     },
     {
       "start": "2027-09-13", "end": "2027-09-30", "tbd": "days",
