@@ -53,7 +53,14 @@
       "tag": "Championship"
     },
     {
-      "start": "2027-09-06", "end": "2027-09-30", "tbd": "days",
+      "start": "2027-09-11", "end": "2027-09-12",
+      "title": "Tasar BC Regatta",
+      "location": "Jericho Sailing Centre, Vancouver, BC",
+      "description": "The annual Tasar BC regatta at the Jericho Sailing Centre, racing on English Bay in Vancouver.",
+      "links": [{ "label": "Jericho Sailing Centre", "url": "https://jsca.bc.ca/" }]
+    },
+    {
+      "start": "2027-09-13", "end": "2027-09-30", "tbd": "days",
       "title": "Puget Sound Sailing Championship (PSSC)",
       "location": "CYC Seattle, Shilshole Bay Marina",
       "description": "PSSC Small Boats regatta hosted at CYC Seattle out of their clubhouse at the north end of Shilshole Bay Marina. Exact dates TBD.",
